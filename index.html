@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,26 +12,56 @@
         <nav>
             <a href="#servicios">Servicios</a>
             <a href="#contacto">Contacto</a>
+            <span id="language-switch">
+                <a href="#" onclick="setLanguage('es')">🇪🇸</a> |
+                <a href="#" onclick="setLanguage('en')">🇬🇧</a>
+            </span>
         </nav>
     </header>
     
     <main>
         <section class="hero">
-            <h2>Servicios Cloud Eficientes y Escalables</h2>
-            <p>Optimiza tus operaciones con nuestras soluciones en la nube</p>
-            <button>Contáctanos</button>
+            <h2 class="lang es">Servicios Cloud Eficientes y Escalables</h2>
+            <h2 class="lang en" style="display:none;">Efficient and Scalable Cloud Services</h2>
+            <p class="lang es">Optimiza tus operaciones con nuestras soluciones en la nube</p>
+            <p class="lang en" style="display:none;">Optimize your operations with our cloud solutions</p>
+            <div class="button-group">
+                <button class="lang es">Contáctanos</button>
+                <button class="lang en" style="display:none;">Contact Us</button>
+            </div>
         </section>
 
         <section id="servicios">
-            <h3>Nuestros Servicios</h3>
-            <div class="service-card">Infraestructura</div>
-            <div class="service-card">Seguridad</div>
-            <div class="service-card">FinOps</div>
+            <h3 class="lang es">Nuestros Servicios</h3>
+            <h3 class="lang en" style="display:none;">Our Services</h3>
+            <div class="service-container">
+                <div class="service-card lang es">Infraestructura</div>
+                <div class="service-card lang en" style="display:none;">Infrastructure</div>
+                <div class="service-card lang es">Seguridad</div>
+                <div class="service-card lang en" style="display:none;">Security</div>
+                <div class="service-card lang es">FinOps</div>
+                <div class="service-card lang en" style="display:none;">FinOps</div>
+            </div>
         </section>
     </main>
 
     <footer>
         <p>© 2024 NimbusCore</p>
     </footer>
+
+    <script>
+        function setLanguage(language) {
+            // Ocultar todos los elementos con la clase lang
+            document.querySelectorAll('.lang').forEach(el => el.style.display = 'none');
+
+            // Mostrar solo los elementos en el idioma seleccionado
+            document.querySelectorAll(`.lang.${language}`).forEach(el => el.style.display = 'block');
+        }
+
+        // Configuración de idioma predeterminado a inglés al cargar la página
+        document.addEventListener("DOMContentLoaded", function() {
+            setLanguage('en');
+        });
+    </script>
 </body>
 </html>
