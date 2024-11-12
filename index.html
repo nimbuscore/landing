@@ -10,8 +10,10 @@
     <header>
         <h1>NimbusCore</h1>
         <nav>
-            <a href="#servicios">Servicios</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#servicios" class="lang es">Servicios</a>
+            <a href="#servicios" class="lang en" style="display:none;">Services</a>
+            <a href="#contacto" class="lang es">Contacto</a>
+            <a href="#contacto" class="lang en" style="display:none;">Contact</a>
             <span id="language-switch">
                 <a href="#" onclick="setLanguage('es')">🇪🇸</a> |
                 <a href="#" onclick="setLanguage('en')">🇬🇧</a>
@@ -58,9 +60,16 @@
             document.querySelectorAll(`.lang.${language}`).forEach(el => el.style.display = 'block');
         }
 
-        // Configuración de idioma predeterminado a inglés al cargar la página
+        // Detectar el idioma según la URL al cargar la página
         document.addEventListener("DOMContentLoaded", function() {
-            setLanguage('en');
+            const path = window.location.pathname;
+            if (path.includes('/espanol')) {
+                setLanguage('es');
+            } else if (path.includes('/english')) {
+                setLanguage('en');
+            } else {
+                setLanguage('en'); // idioma predeterminado
+            }
         });
     </script>
 </body>

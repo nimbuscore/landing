@@ -5,7 +5,7 @@
 }
 
 html, body {
-    height: 100%; /* Para usar todo el espacio de la pantalla */
+    height: 100%;
 }
 
 body {
@@ -30,8 +30,13 @@ header h1 {
     color: #c7c7d1;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 nav a {
-    margin: 0 1rem;
     text-decoration: none;
     color: #c7c7d1;
     transition: color 0.3s;
@@ -39,6 +44,13 @@ nav a {
 
 nav a:hover {
     color: #9ea7b8;
+}
+
+#language-switch {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .hero {
@@ -114,12 +126,11 @@ nav a:hover {
     background: #50506d;
 }
 
-/* Footer "pegajoso" al fondo de la pantalla */
 footer {
     text-align: center;
     padding: 1rem;
     background: #232334;
     color: #c7c7d1;
     font-size: 0.8rem;
-    margin-top: auto; /* Empuja el footer hacia el fondo */
+    margin-top: auto;
 }
