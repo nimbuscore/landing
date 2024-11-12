@@ -1,0 +1,104 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #e0e0e0;
+    line-height: 1.6;
+    background-color: #1e1e2f;
+}
+
+header {
+    background: #232334;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    color: #c7c7d1;
+}
+
+nav a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #c7c7d1;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #9ea7b8;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: linear-gradient(to right, #232334, #1e1e2f);
+    color: #c7c7d1;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    color: #c7c7d1;
+    background-color: #3a3a5a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero button:hover {
+    background-color: #5a5a7a;
+}
+
+#servicios {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: #29293d;
+}
+
+#servicios h3 {
+    font-size: 2rem;
+    color: #c7c7d1;
+    margin-bottom: 2rem;
+}
+
+.service-card {
+    background: #38384e;
+    color: #c7c7d1;
+    padding: 1.5rem;
+    margin: 1rem;
+    display: inline-block;
+    width: 200px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.service-card:hover {
+    background: #50506d;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #232334;
+    color: #c7c7d1;
+    font-size: 0.8rem;
+}
