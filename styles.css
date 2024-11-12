@@ -52,12 +52,11 @@ nav a:hover {
     margin-bottom: 2rem;
 }
 
-/* Agrupa los botones para que se alineen correctamente */
 .hero .button-group {
     display: flex;
     justify-content: center;
-    gap: 1rem; /* Espacio entre botones */
-    margin-top: 1rem; /* Espacio adicional por si está muy pegado al texto */
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 .hero button {
@@ -88,6 +87,13 @@ nav a:hover {
 }
 
 /* Centra las tarjetas de servicio */
+.service-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Espacio entre tarjetas */
+    flex-wrap: wrap;
+}
+
 .service-card {
     background: #38384e;
     color: #c7c7d1;
@@ -95,16 +101,8 @@ nav a:hover {
     margin: 1rem;
     width: 200px;
     border-radius: 8px;
-    transition: background 0.3s;
-    display: inline-block;
     text-align: center;
-}
-
-/* Contenedor para centrar las tarjetas */
-.service-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    transition: background 0.3s;
 }
 
 .service-card:hover {
