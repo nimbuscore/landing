@@ -60,6 +60,12 @@ nav a:hover {
     color: #c7c7d1;
 }
 
+.center-logo {
+    max-width: 300px; /* Ajusta el tamaño según tu preferencia */
+    width: 100%;
+    margin-bottom: 2rem; /* Espacio debajo del logo */
+}
+
 .hero h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
