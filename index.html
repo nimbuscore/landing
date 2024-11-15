@@ -4,92 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NimbusCore Servicios Cloud</title>
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="NimbusCore - Efficient Cloud Services">
-    <meta property="og:description" content="Optimize your operations with scalable and efficient cloud solutions provided by NimbusCore.">
-    <meta property="og:image" content="/logo-preview.png"> <!-- Ruta al logo en el root del proyecto -->
-    <meta property="og:url" content="https://www.nimbuscore.io">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Card Meta Tags (opcional) -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="NimbusCore - Efficient Cloud Services">
-    <meta name="twitter:description" content="Optimize your operations with scalable and efficient cloud solutions provided by NimbusCore.">
-    <meta name="twitter:image" content="/logo-preview.png">
-    
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
     <header>
-        <h1>NimbusCore</h1>
+        <div class="logo-container">
+            <img src="logo.png" alt="NimbusCore Logo" class="logo">
+            <h1>NimbusCore</h1>
+        </div>
         <nav>
             <a href="#servicios" class="lang es">Servicios</a>
-            <a href="#servicios" class="lang en" style="display:none;">Services</a>
+            <a href="#servicios" class="lang en">Services</a>
             <a href="mailto:contact@nimbuscore.io" class="lang es">Contacto</a>
-            <a href="mailto:contact@nimbuscore.io" class="lang en" style="display:none;">Contact</a>
-            <span id="language-switch">
-                <a href="#" onclick="setLanguage('es')">🇪🇸</a> |
-                <a href="#" onclick="setLanguage('en')">🇬🇧</a>
-            </span>
+            <a href="mailto:contact@nimbuscore.io" class="lang en">Contact</a>
+            <div class="language-switch">
+                <button onclick="setLanguage('es')" aria-label="Español">🇪🇸</button>
+                <button onclick="setLanguage('en')" aria-label="English">🇬🇧</button>
+            </div>
         </nav>
     </header>
-    
+
     <main>
         <section class="hero">
-            <img src="logo.png" alt="NimbusCore Logo" class="center-logo">
+            <img src="logo.png" alt="NimbusCore Logo" class="hero-logo">
             <h2 class="lang es">Servicios Cloud Eficientes y Escalables</h2>
-            <h2 class="lang en" style="display:none;">Efficient and Scalable Cloud Services</h2>
+            <h2 class="lang en">Efficient and Scalable Cloud Services</h2>
             <p class="lang es">Optimiza tus operaciones con nuestras soluciones en la nube</p>
-            <p class="lang en" style="display:none;">Optimize your operations with our cloud solutions</p>
-            <div class="button-group">
-                <a href="mailto:contact@nimbuscore.io" class="lang es">
-                    <button>Contáctanos</button>
-                </a>
-                <a href="mailto:contact@nimbuscore.io" class="lang en" style="display:none;">
-                    <button>Contact Us</button>
-                </a>
-            </div>
+            <p class="lang en">Optimize your operations with our cloud solutions</p>
+            <a href="mailto:contact@nimbuscore.io" class="cta-button lang es">Contáctanos</a>
+            <a href="mailto:contact@nimbuscore.io" class="cta-button lang en">Contact Us</a>
         </section>
 
-        <section id="servicios">
+        <section id="servicios" class="services">
             <h3 class="lang es">Nuestros Servicios</h3>
-            <h3 class="lang en" style="display:none;">Our Services</h3>
+            <h3 class="lang en">Our Services</h3>
             <div class="service-container">
-                <div class="service-card lang es">Infraestructura</div>
-                <div class="service-card lang en" style="display:none;">Infrastructure</div>
-                <div class="service-card lang es">Seguridad</div>
-                <div class="service-card lang en" style="display:none;">Security</div>
-                <div class="service-card lang es">FinOps</div>
-                <div class="service-card lang en" style="display:none;">FinOps</div>
+                <article class="service-card">
+                    <img src="infraestructure.png" alt="Icono de Infraestructura" class="service-icon">
+                    <h4 class="lang es">Infraestructura</h4>
+                    <h4 class="lang en">Infrastructure</h4>
+                    <p class="lang es">Soluciones cloud robustas y escalables</p>
+                    <p class="lang en">Robust and scalable cloud solutions</p>
+                    <ul class="lang es">
+                        <li>Experiencia en AWS y Azure con personal certificado</li>
+                        <li>Certificación en Infraestructura como Código (Terraform)</li>
+                        <li>Soluciones cloud robustas y escalables</li>
+                        <li>Trabajamos con microservicios tanto EKS para AWS y AKS para Azure</li>
+                    </ul>
+                    <ul class="lang en">
+                        <li>Expertise in AWS and Azure with certified personnel</li>
+                        <li>Certified in Infrastructure as Code (Terraform)</li>
+                        <li>Robust and scalable cloud solutions</li>
+                        <li>We work with microservices using EKS for AWS and AKS for Azure</li>
+                    </ul>
+                </article>
+                <article class="service-card">
+                    <img src="network-security.png" alt="Icono de Seguridad" class="service-icon">
+                    <h4 class="lang es">Seguridad</h4>
+                    <h4 class="lang en">Security</h4>
+                    <p class="lang es">Protección avanzada para tus datos</p>
+                    <p class="lang en">Advanced protection for your data</p>
+                    <ul class="lang es">
+                        <li>Firewalls de nueva generación</li>
+                        <li>Detección y prevención de intrusiones</li>
+                        <li>Encriptación de datos</li>
+                        <li>Gestión de identidades y accesos</li>
+                    </ul>
+                    <ul class="lang en">
+                        <li>Next-generation firewalls</li>
+                        <li>Intrusion detection and prevention</li>
+                        <li>Data encryption</li>
+                        <li>Identity and access management</li>
+                    </ul>
+                </article>
+                <article class="service-card">
+                    <img src="economy.png" alt="Icono de FinOps" class="service-icon">
+                    <h4 class="lang es">FinOps</h4>
+                    <h4 class="lang en">FinOps</h4>
+                    <p class="lang es">Optimización de costos en la nube</p>
+                    <p class="lang en">Cloud cost optimization</p>
+                    <ul class="lang es">
+                        <li>Optimización de costos en AWS y Azure</li>
+                        <li>Análisis detallado de gastos en la nube</li>
+                        <li>Recomendaciones de optimización de recursos</li>
+                        <li>Informes de ROI y TCO</li>
+                    </ul>
+                    <ul class="lang en">
+                        <li>Cost optimization for AWS and Azure</li>
+                        <li>Detailed analysis of cloud expenses</li>
+                        <li>Resource optimization recommendations</li>
+                        <li>ROI and TCO reports</li>
+                    </ul>
+                </article>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2024 NimbusCore</p>
+        <p class="lang es">&copy; 2024 NimbusCore. Todos los derechos reservados</p>
+        <p class="lang en">&copy; 2024 NimbusCore. All rights reserved</p>
     </footer>
 
     <script>
-        function setLanguage(language) {
-            // Ocultar todos los elementos con la clase lang
-            document.querySelectorAll('.lang').forEach(el => el.style.display = 'none');
-
-            // Mostrar solo los elementos en el idioma seleccionado
-            document.querySelectorAll(`.lang.${language}`).forEach(el => el.style.display = 'block');
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('.lang').forEach(el => {
+                el.style.display = el.classList.contains(lang) ? 'block' : 'none';
+            });
+            localStorage.setItem('preferredLanguage', lang);
         }
 
-        // Detectar el idioma según la URL al cargar la página
-        document.addEventListener("DOMContentLoaded", function() {
-            const path = window.location.pathname;
-            if (path.includes('/espanol')) {
-                setLanguage('es');
-            } else if (path.includes('/english')) {
-                setLanguage('en');
-            } else {
-                setLanguage('en'); // idioma predeterminado
-            }
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 
+                              (navigator.language.startsWith('es') ? 'es' : 'en');
+            setLanguage(savedLang);
         });
     </script>
 </body>
