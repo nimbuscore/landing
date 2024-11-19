@@ -15,6 +15,8 @@ jobs:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       run: |
         curl -X POST -H 'Content-type: application/json' --data '{
+          "username": "soy-la-landing",
+          "icon_url": "https://img.icons8.com/?size=100&id=36878&format=png&color=000000",
           "text": "🚀 *Se ha realizado un cambio en la página alojada en GitHub Pages* 🚀\n
           *Repositorio:* ${{ github.repository }}\n
           *Autor:* ${{ github.event.head_commit.author.name }}\n
