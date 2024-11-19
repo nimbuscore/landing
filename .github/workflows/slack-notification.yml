@@ -1,0 +1,23 @@
+name: Notify Slack on Deployment
+
+on:
+  push:
+    branches:
+      - main # Cambia a la rama que desees monitorizar
+
+jobs:
+  notify-slack:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Notify Slack
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      run: |
+        curl -X POST -H 'Content-type: application/json' --data '{
+          "text": "🚀 *Se ha realizado un cambio en la página alojada en GitHub Pages* 🚀\n
+          *Repositorio:* ${{ github.repository }}\n
+          *Autor:* ${{ github.event.head_commit.author.name }}\n
+          *Mensaje del commit:* ${{ github.event.head_commit.message }}\n
+          *URL del commit:* <${{ github.event.head_commit.url }}|Ver commit>"
+        }' $SLACK_WEBHOOK_URL
