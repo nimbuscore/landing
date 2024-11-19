@@ -16,8 +16,8 @@
         <nav>
             <a href="#servicios" class="lang es">Servicios</a>
             <a href="#servicios" class="lang en">Services</a>
-            <a href="mailto:contact@nimbuscore.io" class="lang es">Contacto</a>
-            <a href="mailto:contact@nimbuscore.io" class="lang en">Contact</a>
+            <a href="/cdn-cgi/l/email-protection#d4b7bbbaa0b5b7a094babdb9b6a1a7b7bba6b1fab1b7" class="lang es">Contacto</a>
+            <a href="/cdn-cgi/l/email-protection#c9aaa6a7bdaaaabd89a7a0a4abbcbaaaa6bbace7a0a6" class="lang en">Contact</a>
             <div class="language-switch">
                 <button onclick="setLanguage('es')" aria-label="Español">🇪🇸</button>
                 <button onclick="setLanguage('en')" aria-label="English">🇬🇧</button>
@@ -32,8 +32,8 @@
             <h2 class="lang en">Efficient and Scalable Cloud Services</h2>
             <p class="lang es">Optimiza tus operaciones con nuestras soluciones en la nube</p>
             <p class="lang en">Optimize your operations with our cloud solutions</p>
-            <a href="mailto:contact@nimbuscore.io" class="cta-button lang es">Contáctanos</a>
-            <a href="mailto:contact@nimbuscore.io" class="cta-button lang en">Contact Us</a>
+            <a href="/cdn-cgi/l/email-protection#5c3f33322835392e1c32353138293f33392938723537" class="cta-button lang es">Contáctanos</a>
+            <a href="/cdn-cgi/l/email-protection#1d7e72736974787b5d73747078696e7e726f78337476" class="cta-button lang en">Contact Us</a>
         </section>
 
         <section id="servicios" class="services">
@@ -99,6 +99,36 @@
         </section>
     </main>
 
+    <div id="chatbot-container" class="chatbot-container">
+        <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Abrir chat">
+            <img src="chatbot.png" alt="Chat Icon" width="60" height="60">
+        </button>
+        <div id="chatbot" class="chatbot">
+            <div class="chatbot-header">
+                <h3 class="lang es">Asistente Virtual</h3>
+                <h3 class="lang en">Virtual Assistant</h3>
+                <button id="chatbot-close" class="chatbot-close" aria-label="Cerrar chat">&times;</button>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="userInput" placeholder="Escribe tu mensaje..." class="lang es">
+                <input type="text" id="userInput" placeholder="Type your message..." class="lang en">
+                <button id="sendMessage" class="lang es">Enviar</button>
+                <button id="sendMessage" class="lang en">Send</button>
+            </div>
+            <div class="common-questions">
+                <button class="common-question lang es" data-question="¿Qué servicios ofrecen?">¿Qué servicios ofrecen?</button>
+                <button class="common-question lang en" data-question="What services do you offer?">What services do you offer?</button>
+                <button class="common-question lang es" data-question="¿Cómo puedo contactarlos?">¿Cómo puedo contactarlos?</button>
+                <button class="common-question lang en" data-question="How can I contact you?">How can I contact you?</button>
+                <button class="common-question lang es" data-question="¿Qué es FinOps?">¿Qué es FinOps?</button>
+                <button class="common-question lang en" data-question="What is FinOps?">What is FinOps?</button>
+                <button class="common-question lang es" data-question="¿Trabajan con AWS y Azure?">¿Trabajan con AWS y Azure?</button>
+                <button class="common-question lang en" data-question="Do you work with AWS and Azure?">Do you work with AWS and Azure?</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-content">
             <p class="lang es">&copy; 2024 NimbusCore. Todos los derechos reservados</p>
@@ -109,6 +139,7 @@
         </div>
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         function setLanguage(lang) {
             document.documentElement.lang = lang;
@@ -124,5 +155,6 @@
             setLanguage(savedLang);
         });
     </script>
+    <script src="chatbot.js"></script>
 </body>
 </html>
