@@ -25,22 +25,44 @@ function getCurrentLanguage() {
     return document.documentElement.lang;
 }
 
+function formatTime(date) {
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
 function addMessage(message, isBot = false) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
     messageElement.classList.add(isBot ? 'bot-message' : 'user-message');
-    // Replace links with properly formatted anchor tags
-    const formattedMessage = message.replace(/<a href='([^']+)'>/g, "<a href='$1' target='_blank' rel='noopener noreferrer'>");
-    messageElement.innerHTML = formattedMessage.replace(/\n/g, '<br>');
+    
+    const timeStamp = document.createElement('span');
+    timeStamp.classList.add('message-timestamp');
+    timeStamp.textContent = formatTime(new Date());
+    
+    const messageContent = document.createElement('div');
+    messageContent.classList.add('message-content');
+    messageContent.innerHTML = message.replace(/\n/g, '<br>');
+    
+    messageElement.appendChild(timeStamp);
+    messageElement.appendChild(messageContent);
+    
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-function getBotResponse(message) {
-    const lang = getCurrentLanguage();
-    return botResponses[lang][message] || (lang === 'es' ? 
-        "Lo siento, no puedo responder esa pregunta específica. Para obtener más información, por favor contáctanos en contact@nimbuscore.io, por <a href='https://wa.me/34672003043?text=%C2%A1Hola!%20Estoy%20interesado%20en%20los%20servicios%20de%20NimbusCore.%20%C2%BFPueden%20darme%20m%C3%A1s%20informaci%C3%B3n%3F' target='_blank' rel='noopener noreferrer'>WhatsApp</a> o visita nuestro <a href='https://www.linkedin.com/company/nimbuscoreio/' target='_blank' rel='noopener noreferrer'>LinkedIn</a>" : 
-        "I'm sorry, I can't answer that specific question. For more information, please contact us at contact@nimbuscore.io, via <a href='https://wa.me/34672003043?text=Hello!%20I%27m%20interested%20in%20NimbusCore%27s%20services.%20Can%20you%20provide%20more%20information%3F' target='_blank' rel='noopener noreferrer'>WhatsApp</a> or visit our <a href='https://www.linkedin.com/company/nimbuscoreio/' target='_blank' rel='noopener noreferrer'>LinkedIn</a>");
+function showTypingIndicator() {
+    const typingIndicator = document.createElement('div');
+    typingIndicator.id = 'typingIndicator';
+    typingIndicator.classList.add('typing-indicator');
+    typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+    chatMessages.appendChild(typingIndicator);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function removeTypingIndicator() {
+    const typingIndicator = document.getElementById('typingIndicator');
+    if (typingIndicator) {
+        typingIndicator.remove();
+    }
 }
 
 function handleSendMessage() {
@@ -48,14 +70,26 @@ function handleSendMessage() {
     if (message) {
         addMessage(message);
         userInput.value = '';
+        showTypingIndicator();
+        
         setTimeout(() => {
-            const botResponse = getBotResponse(message);
-            addMessage(botResponse, true);
-        }, 500);
+            removeTypingIndicator();
+            const botResponse = botResponses[getCurrentLanguage()][message];
+            if (botResponse) {
+                addMessage(botResponse, true);
+            } else {
+                const defaultResponse = getCurrentLanguage() === 'es' 
+                    ? "Lo siento, no puedo responder esa pregunta específica. Para obtener más información, por favor contáctanos en contact@nimbuscore.io, por <a href='https://wa.me/34672003043?text=%C2%A1Hola!%20Estoy%20interesado%20en%20los%20servicios%20de%20NimbusCore.%20%C2%BFPueden%20darme%20m%C3%A1s%20informaci%C3%B3n%3F' target='_blank' rel='noopener noreferrer'>WhatsApp</a> o visita nuestro <a href='https://www.linkedin.com/company/nimbuscoreio/' target='_blank' rel='noopener noreferrer'>LinkedIn</a>"
+                    : "I'm sorry, I can't answer that specific question. For more information, please contact us at contact@nimbuscore.io, via <a href='https://wa.me/34672003043?text=Hello!%20I%27m%20interested%20in%20NimbusCore%27s%20services.%20Can%20you%20provide%20more%20information%3F' target='_blank' rel='noopener noreferrer'>WhatsApp</a> or visit our <a href='https://www.linkedin.com/company/nimbuscoreio/' target='_blank' rel='noopener noreferrer'>LinkedIn</a>";
+                addMessage(defaultResponse, true);
+            }
+        }, 1500);
     }
 }
 
+// Event Listeners
 sendMessage.addEventListener('click', handleSendMessage);
+
 userInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         handleSendMessage();
@@ -64,12 +98,17 @@ userInput.addEventListener('keypress', (e) => {
 
 commonQuestions.forEach(button => {
     button.addEventListener('click', () => {
-        const question = button.getAttribute('data-question');
+        const question = button.textContent;
         addMessage(question);
+        showTypingIndicator();
+        
         setTimeout(() => {
-            const botResponse = getBotResponse(question);
-            addMessage(botResponse, true);
-        }, 500);
+            removeTypingIndicator();
+            const botResponse = botResponses[getCurrentLanguage()][question];
+            if (botResponse) {
+                addMessage(botResponse, true);
+            }
+        }, 1500);
     });
 });
 
@@ -83,10 +122,11 @@ chatbotClose.addEventListener('click', () => {
     chatbotToggle.style.display = 'block';
 });
 
+// Initialize chatbot with welcome message
 window.addEventListener('load', () => {
     const lang = getCurrentLanguage();
-    const welcomeMessage = lang === 'es' ? 
-        "¡Hola! Soy el asistente virtual de NimbusCore. ¿En qué puedo ayudarte hoy? Si tienes alguna pregunta específica, no dudes en contactarnos por email: contact@nimbuscore.io, <a href='https://wa.me/34672003043?text=%C2%A1Hola!%20Estoy%20interesado%20en%20los%20servicios%20de%20NimbusCore.%20%C2%BFPueden%20darme%20m%C3%A1s%20informaci%C3%B3n%3F' target='_blank' rel='noopener noreferrer'>WhatsApp</a> o visitar nuestro <a href='https://www.linkedin.com/company/nimbuscoreio/' target='_blank' rel='noopener noreferrer'>LinkedIn</a>" : 
-        "Hello! I'm the NimbusCore virtual assistant. How can I help you today? If you have any specific questions, don't hesitate to contact us at contact@nimbuscore.io, via <a href='https://wa.me/34672003043?text=Hello!%20I%27m%20interested%20in%20NimbusCore%27s%20services.%20Can%20you%20provide%20more%20information%3F' target='_blank' rel='noopener noreferrer'>WhatsApp</a> or visit our <a href='https://www.linkedin.com/company/nimbuscoreio/' target='_blank' rel='noopener noreferrer'>LinkedIn</a>";
+    const welcomeMessage = lang === 'es' 
+        ? "¡Hola! Soy el asistente virtual de NimbusCore. ¿En qué puedo ayudarte hoy? Si tienes alguna pregunta específica, no dudes en contactarnos por email: contact@nimbuscore.io, <a href='https://wa.me/34672003043?text=%C2%A1Hola!%20Estoy%20interesado%20en%20los%20servicios%20de%20NimbusCore.%20%C2%BFPueden%20darme%20m%C3%A1s%20informaci%C3%B3n%3F' target='_blank' rel='noopener noreferrer'>WhatsApp</a> o visitar nuestro <a href='https://www.linkedin.com/company/nimbuscoreio/' target='_blank' rel='noopener noreferrer'>LinkedIn</a>"
+        : "Hello! I'm the NimbusCore virtual assistant. How can I help you today? If you have any specific questions, don't hesitate to contact us at contact@nimbuscore.io, via <a href='https://wa.me/34672003043?text=Hello!%20I%27m%20interested%20in%20NimbusCore%27s%20services.%20Can%20you%20provide%20more%20information%3F' target='_blank' rel='noopener noreferrer'>WhatsApp</a> or visit our <a href='https://www.linkedin.com/company/nimbuscoreio/' target='_blank' rel='noopener noreferrer'>LinkedIn</a>";
     addMessage(welcomeMessage, true);
 });

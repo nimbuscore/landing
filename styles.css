@@ -373,3 +373,74 @@ footer {
     height: 60px;
     border-radius: 50%;
 }
+
+.message-timestamp {
+    font-size: 0.8em;
+    color: #888;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.typing-indicator {
+    display: flex;
+    padding: 10px;
+    background-color: var(--secondary-bg);
+    border-radius: 20px;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    background-color: #999;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    animation: typing 1s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.language-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.language-switch button {
+    color: var(--text-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.4rem;
+    transition: opacity 0.2s ease;
+}
+
+.language-switch button:hover {
+    opacity: 0.8;
+}
+
+.language-divider {
+    color: var(--text-color);
+    opacity: 0.5;
+}
